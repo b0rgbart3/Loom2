@@ -23,43 +23,16 @@ import { MatMenuModule } from '@angular/material/menu';
 import { ClassThumbComponent } from '../components/classes/class-list/class-thumb.component';
 import { MaterialService } from '../services/material.service';
 import { SeriesService } from '../services/series.service';
-import { SharedModule } from './shared.module';
-import { AdminModule } from './admin.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NavBarComponent,
-    WelcomeComponent,
-    ClassListComponent,
-    ClassThumbComponent
+
   ],
   imports: [
-    CommonModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    MatExpansionModule,
-    MatMenuModule,
-    SharedModule,
-    AdminModule,
-    AppRoutingModule,
+
   ],
   providers: [
-    AssignmentsService,
-    ClassService,
-    CourseService,
-    UserService,
-    MaterialService,
-    MessageService,
-    SeriesService,
-    HttpClientModule,
-    LoomNotificationsService,
-    HttpClient,
-    Globals,
-    AssignmentsResolver,
-    ClassesResolver
+
   ],
-  bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class SharedModule { }

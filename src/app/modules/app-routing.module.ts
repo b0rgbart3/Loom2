@@ -17,19 +17,12 @@ const routes: Routes = [
         resolvedAssignments: AssignmentsResolver
       }
     },
-    {path: 'admin', component: AdminComponent,
-      resolve: {
-        resolvedUsers: UsersResolver,
-        resolvedCourses: CoursesResolver,
-        resolvedClasses: ClassesResolver,
-        resolvedAssignments: AssignmentsResolver
-      }
-    },
 
     {path: '', redirectTo: 'welcome', pathMatch: 'full'},
     {path: '**', component: WelcomeComponent},
 
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
