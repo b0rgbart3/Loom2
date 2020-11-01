@@ -1,0 +1,138 @@
+<app-navbar></app-navbar>
+
+<div class="loomContainer">
+  <div *ngIf="currentCourse">
+    <div *ngIf="courseimageURL" class="mainImage group"
+      [ngStyle]="{ 'background-image': 'url(\' ' + courseimageURL + ' \')' }">
+      <div class="topContent group">
+        <h2>AXIS MUNDI - BRANCH 1 / LIMB 3</h2>
+        <h1>{{ thisClass.title }}</h1>
+        <p>{{ currentCourse.description }}</p>
+        <p class="dates">
+          {{ thisClass.start | date: "MMMM dd, yyyy" }} -
+          {{ thisClass.end | date: "MMMM dd, yyyy" }}
+        </p>
+        <div class="instructors group">
+          <h2>Your Instructors</h2>
+          <div *ngFor="let instructor of instructorThumbnails" class="userThumb" (click)="showBio(instructor.user)">
+            <user-thumb [thumbnail]="instructor"></user-thumb>
+          </div>
+        </div>
+      </div>
+
+      <div class="mainPage">
+        <div class="rollcall group">
+          <div class="students group">
+            <h1>Your Fellow Students</h1>
+            <div *ngFor="let student of studentThumbnails; let i = index" class="userThumb">
+              <user-thumb [thumbnail]="student" class="button" (click)="showBio(student.user)">
+              </user-thumb>
+            </div>
+            <!-- end of thumbnails -->
+          </div>
+          <!-- end of student group -->
+
+          <div *ngIf="currentCourse && !messaging">
+            <div class="classNavBar">
+              <div class="announcementsNavTitle" (click)="showAnnouncementsMenu()"
+                (clickOutside)="hideAnnouncementsMenu()" *ngIf="
+                  (announcements && announcements.length > 0) ||
+                  (currentUser.admin && currentUserIsInstructor)">
+                Announcements ( {{ announcements.length }} )
+              </div>
+
+              <div id="announcementsMenu" class="announcementsMenu group" *ngIf="showingAnnouncementsMenu">
+                <div class="menuLiner group">
+                  <div class="announcementsNav" *ngIf="currentUser.admin && currentUserIsInstructor">
+                    <div (click)="makeAnnouncement()" class="announcementsNavItem">
+                      Make an announcement
+                    </div>
+                  </div>
+                  <div class="announcementsNav" *ngFor="
+                      let announcement of this.announcements;
+                      let t = index
+                    ">
+                    <div (click)="displayAnnouncement(t)" class="announcementsNavItem">
+                      {{ announcement.title }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="interfaceButton" *ngIf="currentUser.admin" (click)="gotoEditor()">
+                Edit course
+              </div>
+              <div class="sectionNavTitle" (click)="showSectionMenu()" (clickOutside)="hideSectionMenu()">
+                Sections
+              </div>
+              <div id="sectionMenu" class="sectionMenu group" *ngIf="showingSectionMenu">
+                <div class="menuLiner group">
+                  <div class="sectionNav" *ngFor="
+                      let section of this.currentCourse.sections;
+                      let s = index
+                    ">
+                    <div (click)="navigateTo(s)" class="sectionNavItem" *ngIf="s > 0">
+                      {{ section.title }}
+                    </div>
+                    <div (click)="navigateTo(s)" class="sectionNavItem" *ngIf="s === 0">
+                      Welcome
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="navArrows">
+                <div class="nextSection" (click)="nextSection()"
+                  *ngIf="sectionNumber < this.currentCourse.sections.length - 1"></div>
+                <div class="nextSection hidden" *ngIf="sectionNumber >= currentCourse.sections.length - 1"></div>
+
+                <div class="prevSection" (click)="prevSection()" *ngIf="sectionNumber > 0"></div>
+                <div class="prevSection hidden" *ngIf="sectionNumber < 1"></div>
+              </div>
+            </div>
+
+            <make-announcement *ngIf="showingAnnouncementsForm" (close)="closeAnnoucementsForm($event)"
+              [instructorID]="currentUser.id" [classID]="thisClass.id"></make-announcement>
+            <!-- currentUser.id: {{currentUser.id }}<br>
+                thisClass.id {{ thisClass.id }} <br> -->
+            <div class="announcementBox" *ngIf="showingAnnouncements">
+              <div class="closeAnnouncements" (click)="hideAnnouncements()"></div>
+              <h1>
+                {{ currentAnnouncement.title }} -- {{ currentAnnouncement.id }}
+              </h1>
+              {{ currentAnnouncement.announcement }}
+
+              <div *ngIf="currentUser.admin && currentUserIsInstructor">
+                <div class="deleteAnnouncement" (click)="deleteAnnouncement()">
+                  Delete
+                </div>
+                <div class="editAnnouncement">Edit</div>
+              </div>
+            </div>
+            <div *ngIf="currentCourse.sections" class="section group">
+              <section-comp 
+              [thisClass]='thisClass' 
+              [course]='currentCourse' 
+              [section]='section'
+              [students]='students'
+              [instructors]='instructors'
+              [materialSets]='materialSets[sectionNumber]'
+              [discussionSettings] = 'discussionSettings'
+              [notesSettings] = 'notesSettings'
+              >
+               </section-comp>
+
+              <!-- <section-comp [thisClass]="thisClass" [course]="currentCourse" [section]="section" [students]="students"
+                [instructors]="instructors" [materialSets]="currentMaterials" [discussionSettings]="discussionSettings"
+                [notesSettings]="notesSettings"></section-comp> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="popBio" *ngIf="showingBio">
+      <bio-pop [bioUser]="bioChosen" (closeMe)="closeBio($event)" (messageMe)="message($event)"></bio-pop>
+    </div>
+  </div>
+</div>

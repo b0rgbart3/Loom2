@@ -1,0 +1,20 @@
+
+<div class='padMe classList'>
+      <h1>Current &amp; Upcoming Classes on The Loom</h1>
+  <div class="list-group">
+    <div class="list-group-item"
+      *ngFor="let classObject of classes">
+      
+      
+      <app-class-thumb [classObject]=classObject [currentUser]='currentUser' [showTeachers]=true [showRegButtons]='showRegButtons' [users] ='users' [classes] ='classes' [courses] ='courses' [assignments]='assignments'></app-class-thumb>
+
+      
+      </div>
+    </div>
+
+    <!-- <button class="btn btn-warning" (click)="createNewCourse()">New</button> -->
+
+<div class="notice" *ngIf="!classes">Currently having 
+  trouble accessing the database for class info.</div>
+</div>
+

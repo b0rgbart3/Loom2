@@ -1,0 +1,24 @@
+
+<div class='loomContainer group'>
+        <!-- <flash-messages></flash-messages> -->
+
+    <div class='branding'>
+        <h1> Welcome to the Reclaiming Loom {{ username }}</h1>
+        <div class='loginButton' (click)="login()" 
+        *ngIf="!currentUser || currentUser == null">Login</div>
+    </div>
+
+    <app-class-list [classes]='classes' [assignments]='assignments' [courses]='courses' [users]='users' [showRegButtons]='true'></app-class-list>
+
+</div>
+
+
+
+
+<!-- 
+    
+    <div *ngFor='let instructor of instructorassignments'>
+    <p> Instructor: {{ instructor.user.username }}, 
+    {{ instructor.classId }}</p>
+</div> -->
+           <!-- {{ instructorassignments | json }} -->

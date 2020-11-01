@@ -1,0 +1,85 @@
+.Box {
+    text-align: left;
+    margin-left:auto;
+    margin-right:auto;
+    width:60%;
+    padding:0px;
+    margin-top:20px;
+    box-sizing: border-box;
+    border-radius:4px;
+    overflow: hidden;
+    font-family: 'Roboto';
+    margin-top:80px;
+    background-color:#34414e;
+    min-width:640px;
+  }
+
+.contactForm {
+    background-color:#cccccc;
+    margin:20px;
+    padding:20px;
+    border-radius:4px;
+}
+
+.confirmation {
+    text-align: left;
+    margin-left:auto;
+    margin-right:auto;
+    width:60%;
+    padding:0px;
+    margin-top:40px;
+    box-sizing: border-box;
+    border-radius:4px;
+    overflow: hidden;
+    font-family: 'Roboto';
+    margin-top:80px;
+    background-color:#506172;
+    min-width:640px;
+    color:white;
+    padding:50px;
+}
+
+input {
+    display:block;
+    width:100%;
+    padding:9px;
+    box-sizing: border-box;
+    border:none;
+    border-radius:8px;
+    margin-bottom:20px;
+    font-size:20px;
+    padding-top:18px;
+    background-color:rgba(255,255,255,.25);
+    
+}
+
+input:active {
+    outline:none;
+    background-color:rgba(255,255,255,1);
+}
+
+
+input:focus {
+    outline:none;
+    background-color:rgba(255,255,255,1);
+}
+textarea {
+    font-size:20px;
+    padding:8px;
+    box-sizing:border-box;
+    border:none;
+    border-radius:8px;
+    width:100%;
+    margin-bottom:30px;
+    font-family: 'Roboto';
+    background-color:rgba(255,255,255,.25);
+}
+
+textarea:focus {
+    outline:none;
+    background-color:rgba(255,255,255,1);
+}
+textarea:active {
+    outline:none;
+    background-color:rgba(255,255,255,1);
+}
