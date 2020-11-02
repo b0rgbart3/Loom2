@@ -25,6 +25,8 @@ import { ClassEditComponent } from '../admin/components/class-edit.component';
 import { AssignmentsComponent } from '../admin/components/assignments.component';
 import { ContentComponent } from '../admin/components/content.component';
 import { SeriesResolver } from '../resolvers/series.resolver';
+import { MaterialsAdminComponent } from '../admin/components/materials-admin.component';
+import { MaterialsResolver } from '../resolvers/materials-resolver';
 
 const adminRoutes: Routes = [
 
@@ -58,6 +60,18 @@ const adminRoutes: Routes = [
                     classes: ClassesResolver,
                     series: SeriesResolver,
                     courses: CoursesResolver }},
+            { path: 'materials', component: MaterialsAdminComponent,
+                resolve: {
+                    courses: CoursesResolver,
+                    materials: MaterialsResolver}},
+            // { path: 'courses/:id/edit', pathMatch: 'full', component: CourseEditComponent,
+            // canDeactivate: [ CourseEditGuard ],
+            // resolve: { course: CourseResolver,
+            //     allmaterials: AllMaterialsResolver }},
+            // { path: 'courseObjects/:id/edit', pathMatch: 'full', component: CourseObjectEditComponent,
+            // canDeactivate: [ CourseObjectEditGuard ],
+            // resolve: { course: CourseResolver,
+            //     allmaterials: AllMaterialsResolver }},
         ]
     },
 
@@ -76,7 +90,8 @@ const adminRoutes: Routes = [
         InstructorsComponent,
         AssignmentsComponent,
         ClassEditComponent,
-        ContentComponent
+        ContentComponent,
+        MaterialsAdminComponent
     ],
     providers: [
         AdminRouteActivator,
