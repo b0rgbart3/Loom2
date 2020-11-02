@@ -22,6 +22,9 @@ import { InstructorsResolver } from '../resolvers/instructors-resolver.service';
 import { ClassResolver } from '../resolvers/class.resolver';
 import { CoursesResolver } from '../resolvers/courses.resolver';
 import { ClassEditComponent } from '../admin/components/class-edit.component';
+import { AssignmentsComponent } from '../admin/components/assignments.component';
+import { ContentComponent } from '../admin/components/content.component';
+import { SeriesResolver } from '../resolvers/series.resolver';
 
 const adminRoutes: Routes = [
 
@@ -48,6 +51,13 @@ const adminRoutes: Routes = [
                   thisClass: ClassResolver,
                   courses: CoursesResolver
             }},
+            { path: 'classes', component: ContentComponent,
+                resolve: {
+                    users: UsersResolver,
+                    instructors: InstructorsResolver,
+                    classes: ClassesResolver,
+                    series: SeriesResolver,
+                    courses: CoursesResolver }},
         ]
     },
 
@@ -64,7 +74,9 @@ const adminRoutes: Routes = [
         StudentsComponent,
         EnrollmentsComponent,
         InstructorsComponent,
+        AssignmentsComponent,
         ClassEditComponent,
+        ContentComponent
     ],
     providers: [
         AdminRouteActivator,

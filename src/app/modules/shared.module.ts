@@ -28,6 +28,7 @@ import { EnrollmentsResolver } from '../resolvers/enrollments.resolver';
 import { CacheInterceptor } from '../resolvers/cache.interceptor';
 import { AuthGuard } from '../services/auth-guard.service';
 import { MessagesResolver } from '../resolvers/messages-resolver';
+import { SeriesResolver } from '../resolvers/series.resolver';
 import { UserThumbComponent } from '../components/users/user-thumb/user-thumb.component';
 import { SafePipe } from '../shared/safe.pipe';
 import { InstructorsResolver } from '../resolvers/instructors-resolver.service';
@@ -38,6 +39,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import {MatInputModule} from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -59,7 +62,9 @@ import {MatSelectModule} from '@angular/material/select';
     MatDatepickerModule,
     MatInputModule,
     MatNativeDateModule,
-    MatSelectModule
+    MatSelectModule,
+    MatListModule,
+    MatIconModule,
 
   ],
   providers: [
@@ -76,6 +81,8 @@ import {MatSelectModule} from '@angular/material/select';
     LoomNotificationsService,
     EnrollmentsResolver,
     MessagesResolver,
+    SeriesResolver,
+
     HttpClient,
     Globals,
     AssignmentsResolver,
@@ -102,7 +109,9 @@ import {MatSelectModule} from '@angular/material/select';
     MatDatepickerModule,
     MatInputModule,
     MatNativeDateModule,
-    MatSelectModule
+    MatSelectModule,
+    MatListModule,
+    MatIconModule,
 
 
   ]

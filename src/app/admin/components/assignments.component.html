@@ -1,18 +1,18 @@
 <div class="padMe">
         <!-- {{ assignments | json }} -->
         <div *ngFor='let classGroup of classes'>
-                <h3>{{ classGroup.title }} {{classGroup.id}}</h3>
-                <div *ngFor='let assignment of assignments; let i=index'>
+                <h3>{{ classGroup.title }} classID:{{classGroup.classId}}</h3>
+                <div *ngFor='let assignment of assignmentsWithUserObjects; let i=index'>
 
                   
-                <div *ngIf='assignment.class_id === classGroup.id' class='listItem'>
-                <div class='tableRow' *ngIf='assignment.this_user'>
+                <div *ngIf='assignment.assignment.classId === classGroup.classId' class='listItem'>
+                <div class='tableRow' *ngIf='assignment.user'>
                     <div class='tableCell'>
-                        {{ assignment.this_user.username}}
+                        {{ assignment.user.username}}
                     </div>
-                    <div class='tableCell'>{{ assignment.this_user.firstname}}  </div>
-                        <div class='tableCell'>{{ assignment.this_user.lastname}}  </div>
-                            <div class='tableCell'>{{ assignment.this_user.email}}  </div>
+                    <div class='tableCell'>{{ assignment.user.firstname}}  </div>
+                        <div class='tableCell'>{{ assignment.user.lastname}}  </div>
+                            <div class='tableCell'>{{ assignment.user.email}}  </div>
                             <div class='tableCell'><div class='tinytrash' (click)='trash(i)'></div></div>
                 </div></div>
                 </div>
@@ -27,17 +27,17 @@
             <div class='selectContainer'>
             <mat-form-field>
                 <mat-select placeholder='Instructor' mdSelect formControlName='userId'>
-                     <mat-option *ngFor='let instructor of instructors' mdOption [value]='instructor.id'>
+                     <mat-option *ngFor='let instructor of instructors' mdOption [value]='instructor.userId'>
                        {{ instructor.username }}</mat-option>
                  </mat-select></mat-form-field>
                  <span class='help-block' *ngIf="(form.touched) && form.get('userId').errors">
                         <span *ngIf="form.get('userId').errors">You need to choose the instructor</span>
                      </span>
-                </div>
+            </div>
                 <div class='selectContainer'>
                  <mat-form-field>          
                 <mat-select placeholder='Class' mdSelect formControlName='classId'>
-                     <mat-option *ngFor='let classModel of classes' mdOption [value]='classModel.id'>
+                     <mat-option *ngFor='let classModel of classes' mdOption [value]='classModel.classId'>
                        {{ classModel.title }}</mat-option>
                  </mat-select></mat-form-field>
                  <span class='help-block' *ngIf="(form.touched) && form.get('classId').errors">
@@ -47,10 +47,10 @@
                     <div class='loomButton loomSubmit' 
                     (click)='postAssignment()' [ngClass]="{'disabled': (!form.valid)}" >Submit</div>
                 
-
+              
 
         </form>
-        <div class='debug'>
+        <!-- <div class='debug'>
                 Form touched: {{ form.touched }}<br>
                 Form dirty: {{ form.dirty }}<br>
                 Form valid: {{ form.valid }}<br>
@@ -58,5 +58,5 @@
                dirty: {{ form.get('userId').dirty }} <br>
                errors: {{ form.get('userId').errors  | json }}<br>
                     {{ form.value | json}}
-                 </div>
+                 </div> -->
     </div>

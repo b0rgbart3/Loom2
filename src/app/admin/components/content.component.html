@@ -1,0 +1,88 @@
+
+
+
+
+<!-- <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Courses</mat-panel-title>
+        </mat-expansion-panel-header>
+    
+        <mat-list>
+            <mat-list-item [routerLink]="['/admin/courses', 0, 'edit']">
+                <mat-icon class="example-icon">add</mat-icon> Add a new Course
+            </mat-list-item>
+            <mat-list-item *ngFor='let course of courseArray' [routerLink]="['/admin/courses',course.id,'edit']">
+                {{ course.title }}
+            </mat-list-item>
+        </mat-list>
+    </mat-expansion-panel>
+<br> -->
+<mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+            <mat-panel-title>Coursework</mat-panel-title>
+        </mat-expansion-panel-header>
+    
+        <mat-list>
+            <mat-list-item [routerLink]="['/admin/courseObjects', 0, 'edit']">
+                <mat-icon class="example-icon">add</mat-icon> Add a new Course
+            </mat-list-item>
+            <mat-list-item *ngFor='let course of courseArray' [routerLink]="['/admin/courseObjects',course.id,'edit']">
+                {{ course.title }}
+            </mat-list-item>
+        </mat-list>
+    </mat-expansion-panel>
+
+    <br>
+    <mat-expansion-panel >
+            <mat-expansion-panel-header>
+                <mat-panel-title>Classes</mat-panel-title>
+            </mat-expansion-panel-header>
+        
+            <mat-list>
+                <mat-list-item [routerLink]="['0/edit']">
+                    <mat-icon class="example-icon">add</mat-icon> Add a new Class
+                </mat-list-item>
+                <mat-list-item *ngFor='let classObject of classArray' [routerLink]="[classObject.id,'edit']">
+                    {{ classObject.title }}
+                </mat-list-item>
+            </mat-list>
+        </mat-expansion-panel>
+    <br>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Series</mat-panel-title>
+        </mat-expansion-panel-header>
+    
+        <mat-list>
+            <mat-list-item [routerLink]="['/admin/series', 0, 'edit']">
+                <mat-icon class="example-icon">add</mat-icon> Add a new Series
+            </mat-list-item>
+            <mat-list-item *ngFor='let serie of seriesArray' [routerLink]="['/admin/series',serie.id,'edit']">
+                {{ serie.title }}
+            </mat-list-item>
+        </mat-list>
+    </mat-expansion-panel>
+    <br><br><br>
+    <div class='divider'></div>
+    <br><br>
+
+    <div class='trashCan'>
+        <mat-expansion-panel>
+        <mat-expansion-panel-header>Trashed Data Recovery</mat-expansion-panel-header>
+            <div *ngIf='removedClasses && removedClasses.length > 0'>
+                <h2>Classes</h2>
+            <div *ngFor='let classObject of removedClasses' class='removedObjectLine'>{{classObject.title}} 
+                <p>{{classObject.start | date}}</p>|  <a (click)='recoverClass(classObject)'>recover this class</a> |</div>
+            </div>
+            <div *ngIf='removedCourses && removedCourses.length > 0'>
+                <h2>Course Work</h2>
+                <div *ngFor='let courseObject of removedCourses' class='removedObjectLine'>{{courseObject.title}} 
+                        <p>{{courseObject.description}}</p>|  <a (click)='recoverCourse(courseObject)'>recover this course</a> |</div>
+            </div>
+            <div *ngIf='removedSeries && removedSeries.length > 0'>
+                <h2>Series</h2>
+                <div *ngFor='let seriesObject of removedSeries' class='removedObjectLine'>{{seriesObject.title}} 
+                        <p>{{seriesObject.description}}</p>|  <a (click)='recoverSeries(seriesObject)'>recover this series</a> |</div>
+            </div>    
+        </mat-expansion-panel>
+    </div>

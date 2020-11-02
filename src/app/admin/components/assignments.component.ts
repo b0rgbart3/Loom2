@@ -21,6 +21,7 @@ import { Assignment } from '../../models/assignment.model';
 export class AssignmentsComponent implements OnInit {
     form: FormGroup;
     assignments: Assignment[];
+    assignmentsWithUserObjects: [{}];
     instructors: User[];
     classes: ClassModel[];
     users: User[];
@@ -41,16 +42,26 @@ export class AssignmentsComponent implements OnInit {
             data => {
                 //  console.log('Got new data!');
                 this.assignments = data.assignments;
-                // console.log(' Assignments: ' + JSON.stringify(data));
+                console.log('In assignmentsComponent: Assignments: ', this.assignments);
                 this.classes = data.classes;
                 this.users = data.users;
                 this.instructors = data.instructors;
+
+                this.assignmentsWithUserObjects = [{}];
+                console.log('made it into the enrollments component.');
+                this.assignments.map((assignment) => {
+                    const userObject = this.userService.getUserFromMemoryById(assignment.userId);
+                    const assignmentWithUserObject = { user: userObject, assignment};
+                    this.assignmentsWithUserObjects.push( assignmentWithUserObject );
+                });
+                this.assignmentsWithUserObjects.shift(); // lose the empty initial object;
+                console.log('assignmentsWith User Objects: ', this.assignmentsWithUserObjects);
             }
         );
 
         this.form = this.fb.group({
-            user_id: ['', Validators.required],
-            class_id: ['', Validators.required],
+            userId: ['', Validators.required],
+            classId: ['', Validators.required],
         });
 
     }
