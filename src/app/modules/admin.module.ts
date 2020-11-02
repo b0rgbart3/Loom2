@@ -19,6 +19,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { InstructorsComponent } from '../admin/components/instructors.component';
 import { AssignmentsResolver } from '../resolvers/assignments.resolver';
 import { InstructorsResolver } from '../resolvers/instructors-resolver.service';
+import { ClassResolver } from '../resolvers/class.resolver';
+import { CoursesResolver } from '../resolvers/courses.resolver';
+import { ClassEditComponent } from '../admin/components/class-edit.component';
 
 const adminRoutes: Routes = [
 
@@ -28,11 +31,23 @@ const adminRoutes: Routes = [
         resolve: { users: UsersResolver },
         children: [
             { path: '', redirectTo: 'classes', pathMatch: 'full' },
-            { path: 'students', component: StudentsComponent, resolve: { users: UsersResolver,
-                classes: ClassesResolver, enrollments: EnrollmentsResolver }},
+            { path: 'students', component: StudentsComponent,
+              resolve: {
+                  users: UsersResolver,
+                  classes: ClassesResolver,
+                  enrollments: EnrollmentsResolver }},
             { path: 'instructors', component: InstructorsComponent,
-            resolve: { users: UsersResolver, instructors: InstructorsResolver,
-                classes: ClassesResolver, assignments: AssignmentsResolver }},
+              resolve: {
+                  users: UsersResolver,
+                  instructors: InstructorsResolver,
+                  classes: ClassesResolver,
+                  assignments: AssignmentsResolver }},
+            { path: 'classes/:id/edit', component: ClassEditComponent,
+              resolve: {
+                  users: UsersResolver,
+                  thisClass: ClassResolver,
+                  courses: CoursesResolver
+            }},
         ]
     },
 
@@ -49,6 +64,7 @@ const adminRoutes: Routes = [
         StudentsComponent,
         EnrollmentsComponent,
         InstructorsComponent,
+        ClassEditComponent,
     ],
     providers: [
         AdminRouteActivator,

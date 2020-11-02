@@ -34,6 +34,7 @@ export class EnrollmentsComponent implements OnInit {
     // The form control names match the Enrollment Data Model.  Nice!
 
     ngOnInit(): void {
+        console.log('made it into the enrollments component.');
         this.feedback = '';
         this.enrollmentForm = this.fb.group({
             userId: ['', Validators.required],

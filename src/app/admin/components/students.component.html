@@ -2,13 +2,15 @@
   <mat-expansion-panel-header>
       <mat-panel-title>Students</mat-panel-title>
   </mat-expansion-panel-header>
-  <user-list [users]="users" *ngIf='users' [showInstructorChoice]="true" [showSuspensionChoice]="true"></user-list>   
+  USER LIST:
+  <app-user-list-component [users]="users" *ngIf='users' [showInstructorChoice]="true" [showSuspensionChoice]="true"></app-user-list-component>   
 </mat-expansion-panel>
 <br>
 <mat-expansion-panel>
+  ENROLLMENTS:
   <mat-expansion-panel-header>
     <mat-panel-title>Student Enrollments</mat-panel-title>
   </mat-expansion-panel-header>
 
-  <app-enrollments [users]="users" [enrollments]="enrollments" [classes]="classes"></app-enrollments>
+  <app-enrollments-component [users]="users" [enrollments]="enrollments" [classes]="classes"></app-enrollments-component>
 </mat-expansion-panel>

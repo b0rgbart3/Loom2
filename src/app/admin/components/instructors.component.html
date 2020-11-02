@@ -2,7 +2,7 @@
     <mat-expansion-panel-header>
         <mat-panel-title>Instructors</mat-panel-title>
     </mat-expansion-panel-header>
-<user-list [users]="instructors" *ngIf='instructors' [showInstructorChoice]="false" [showSuspensionChoice]='false'></user-list>   
+<app-user-list-component [users]="instructors" *ngIf='instructors' [showInstructorChoice]="false" [showSuspensionChoice]='false'></app-user-list-component>   
 </mat-expansion-panel>
 <br>
 <mat-expansion-panel>

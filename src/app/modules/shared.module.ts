@@ -16,7 +16,6 @@ import { MessageService } from '../services/message.service';
 import { LoomNotificationsService } from '../services/loom.notifications.service';
 import { UserService } from '../services/user.service';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { MatExpansionModule } from '@angular/material/expansion';
 import { NavBarComponent } from '../components/navbar/nav-bar.component';
 import { ClassListComponent } from '../components/classes/class-list/class-list.component';
 import { MatMenuModule } from '@angular/material/menu';
@@ -32,12 +31,21 @@ import { MessagesResolver } from '../resolvers/messages-resolver';
 import { UserThumbComponent } from '../components/users/user-thumb/user-thumb.component';
 import { SafePipe } from '../shared/safe.pipe';
 import { InstructorsResolver } from '../resolvers/instructors-resolver.service';
+import { UserListComponent } from '../admin/components/user-list.component';
+
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatExpansionModule } from '@angular/material/expansion';
+import {MatInputModule} from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
+import { EnrollmentsComponent } from '../admin/components/enrollments.component';
+
 
 @NgModule({
   declarations: [
     ClassListComponent,
     ClassThumbComponent,
     UserThumbComponent,
+    UserListComponent,
     SafePipe,
   ],
   imports: [
@@ -46,9 +54,12 @@ import { InstructorsResolver } from '../resolvers/instructors-resolver.service';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
     MatExpansionModule,
     MatMenuModule,
-    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule
 
   ],
   providers: [
@@ -77,6 +88,7 @@ import { InstructorsResolver } from '../resolvers/instructors-resolver.service';
     ClassListComponent,
     ClassThumbComponent,
     UserThumbComponent,
+    UserListComponent,
     SafePipe,
 
     HttpClientModule,
@@ -84,9 +96,12 @@ import { InstructorsResolver } from '../resolvers/instructors-resolver.service';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
     MatExpansionModule,
     MatMenuModule,
-    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule
 
 
   ]
