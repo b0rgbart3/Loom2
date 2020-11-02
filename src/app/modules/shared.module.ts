@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 
-import { NgModule } from '@angular/core';
+import { Pipe, NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from '../components/app/app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -29,11 +29,15 @@ import { EnrollmentsResolver } from '../resolvers/enrollments.resolver';
 import { CacheInterceptor } from '../resolvers/cache.interceptor';
 import { AuthGuard } from '../services/auth-guard.service';
 import { MessagesResolver } from '../resolvers/messages-resolver';
+import { UserThumbComponent } from '../components/users/user-thumb/user-thumb.component';
+import { SafePipe } from '../shared/safe.pipe';
 
 @NgModule({
   declarations: [
     ClassListComponent,
     ClassThumbComponent,
+    UserThumbComponent,
+    SafePipe,
   ],
   imports: [
     HttpClientModule,
@@ -44,6 +48,7 @@ import { MessagesResolver } from '../resolvers/messages-resolver';
     MatExpansionModule,
     MatMenuModule,
     BrowserAnimationsModule,
+
   ],
   providers: [
     AuthGuard,
@@ -69,6 +74,8 @@ import { MessagesResolver } from '../resolvers/messages-resolver';
   exports: [
     ClassListComponent,
     ClassThumbComponent,
+    UserThumbComponent,
+    SafePipe,
 
     HttpClientModule,
     CommonModule,

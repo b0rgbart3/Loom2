@@ -16,7 +16,7 @@
      <div *ngIf='instructorThumbnails'>
         
      <div class='instructorIcon' *ngFor='let instructor of instructorThumbnails'  (click)='showBio(instructor.user)'>
-         <user-thumb [thumbnail]='instructor' *ngIf='instructor'></user-thumb>
+         <app-user-thumb [thumbnail]='instructor' *ngIf='instructor'></app-user-thumb>
      </div>
     </div>
     </div>
