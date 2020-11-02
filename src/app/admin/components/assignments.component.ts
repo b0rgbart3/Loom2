@@ -49,8 +49,8 @@ export class AssignmentsComponent implements OnInit {
         );
 
         this.form = this.fb.group({
-            userId: ['', Validators.required],
-            classId: ['', Validators.required],
+            user_id: ['', Validators.required],
+            class_id: ['', Validators.required],
         });
 
     }

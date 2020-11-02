@@ -13,7 +13,7 @@ USER LISTING:
           <div class='thumbnailAdmin' [routerLink]="['/usersettings/' + user.userId + '/edit']">
               <user-thumb [thumbnail]='user' class='listThumb'></user-thumb>
             <div class='userInfo'>
-              <h1>{{ user.user.username }}  {{ user.user.id }}</h1>
+              <h1>{{ user.user.username }}  {{ user.user.userId }}</h1>
             {{ user.user.firstname }} {{ user.user.lastname }}<br>
             {{ user.user.email }}</div>
           </div>
@@ -27,8 +27,8 @@ USER LISTING:
             account not verified
         </div>
 
-        <div class='fbReg' *ngIf='user.user.facebookRegistration'>
-        </div>
+        <!-- <div class='fbReg' *ngIf='user.user.facebookRegistration'>
+        </div> -->
        
           
           <!-- <div class='remover' 

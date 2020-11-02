@@ -45,7 +45,7 @@ export class StudentsComponent implements OnInit {
 
         this.activatedRoute.data.subscribe(
             data => {
-                //   console.log('Got new data!');
+                console.log('Got new data!');
                 this.users = data.users;
 
                 this.dataError = false;
@@ -59,7 +59,7 @@ export class StudentsComponent implements OnInit {
                     this.users = resolvedUserData;
                     this.userService.takeInResolvedData(this.users);
                 }
-                console.log('Users: ', this.users);
+                // console.log('Users: ', this.users);
 
                 const resolvedEnrollmentData: Enrollment[] | DataError = this.activatedRoute.snapshot.data[`enrollments`];
 
@@ -70,7 +70,7 @@ export class StudentsComponent implements OnInit {
                     this.enrollments = resolvedEnrollmentData;
                     this.enrollmentsService.takeInResolvedData(this.enrollments);
                 }
-                console.log('Enrollments: ', this.enrollments);
+                // console.log('Enrollments: ', this.enrollments);
 
                 const resolvedClassData: ClassModel[] | DataError = this.activatedRoute.snapshot.data[`classes`];
 
@@ -81,7 +81,7 @@ export class StudentsComponent implements OnInit {
                     this.classes = resolvedClassData;
                     this.classService.takeInResolvedData(this.classes);
                 }
-                console.log('Classes: ', this.classes);
+                // console.log('Classes: ', this.classes);
 
 
             }

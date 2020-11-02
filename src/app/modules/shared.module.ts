@@ -37,8 +37,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatExpansionModule } from '@angular/material/expansion';
 import {MatInputModule} from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
-import { EnrollmentsComponent } from '../admin/components/enrollments.component';
-
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -59,7 +58,8 @@ import { EnrollmentsComponent } from '../admin/components/enrollments.component'
     MatMenuModule,
     MatDatepickerModule,
     MatInputModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSelectModule
 
   ],
   providers: [
@@ -101,7 +101,8 @@ import { EnrollmentsComponent } from '../admin/components/enrollments.component'
     MatMenuModule,
     MatDatepickerModule,
     MatInputModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSelectModule
 
 
   ]

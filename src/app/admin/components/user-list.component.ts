@@ -31,7 +31,7 @@ export class UserListComponent implements OnInit {
   constructor(private userService: UserService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    console.log('In user-list component, users: ', this.users);
+   // console.log('In user-list component, users: ', this.users);
     this.order = 'username';
     this.reverse = false;
 
@@ -89,8 +89,14 @@ export class UserListComponent implements OnInit {
       console.log('sorting thumbnails with criteria of: ' + criteria);
       const copy = this.thumbnails;
       copy.sort( (a, b) => {
-        const textA = a.user[criteria].toString().toLocaleLowerCase();
-        const textB = b.user[criteria].toString().toLocaleLowerCase();
+        let textA = '';
+        let textB = '';
+        if (a.user[criteria]){
+        textA = a.user[criteria].toString().toLocaleLowerCase();
+        }
+        if (b.user[criteria]) {
+        textB = b.user[criteria].toString().toLocaleLowerCase();
+        }
         return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
       });
       this.sortedThumbnails = copy;

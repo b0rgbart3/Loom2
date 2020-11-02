@@ -18,6 +18,7 @@ import { EnrollmentsService } from '../../services/enrollments.service';
 })
 
 export class EnrollmentsComponent implements OnInit {
+    enrollmentsWithUserObjects: [{}];
     enrollmentForm: FormGroup;
     feedback: string;
     @Input() users: User[];
@@ -34,13 +35,20 @@ export class EnrollmentsComponent implements OnInit {
     // The form control names match the Enrollment Data Model.  Nice!
 
     ngOnInit(): void {
+        this.enrollmentsWithUserObjects = [{}];
         console.log('made it into the enrollments component.');
+        this.enrollments.map((enrollment) => {
+            const userObject = this.userService.getUserFromMemoryById(enrollment.userId);
+            const enrollmentWithUserObject = { user: userObject, enrollment};
+            this.enrollmentsWithUserObjects.push( enrollmentWithUserObject );
+        });
         this.feedback = '';
         this.enrollmentForm = this.fb.group({
             userId: ['', Validators.required],
             classId: ['', Validators.required],
         });
 
+        console.log('In enrollments, classes: ', this.classes);
     }
 
     unique(object): boolean {
