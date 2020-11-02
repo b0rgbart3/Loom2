@@ -6,6 +6,10 @@ import { ClassService } from '../../../services/class.service';
 import { User } from '../../../models/user.model';
 import { UserService } from 'src/app/services/user.service';
 
+import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+
+
 @Component({
   selector: 'app-class-list',
   templateUrl: './class-list.component.html',

@@ -1,0 +1,38 @@
+
+<div class='loomContainer'>
+        <div class='loomCard padMe'>
+                <div class='tabContainer' *ngIf='showTabs'>
+                <div [class]='takingLabel' (click)='taking()'>Classes you are taking</div>
+                <div [class]='teachingLabel' (click)='teaching()'>Classes you are teaching</div></div>
+        <br clear='all'>
+        <div *ngIf='classesTaking && showTaking' class='listOfClasses'>
+                
+                        <div class="list-group-item"
+                        *ngFor="let classObject of classesTaking">
+                       
+                        <div (click)='goto(classObject.classId)' class='clickableDiv'>
+                        <!-- <class-thumb [classObject]=classObject [showTeachers]=false></class-thumb> -->
+                        
+                        <app-class-thumb [classObject]=classObject [currentUser]='currentUser' [showTeachers]=true [showRegButtons]='showRegButtons' [users] ='users' [classes] ='classes' [courses] ='courses' [assignments]='assignments'></app-class-thumb>
+                        </div></div>
+</div>
+
+        <div *ngIf='classesTeaching && showTeaching' class='listOfClasses'>
+                        <div class="list-group-item"
+                        *ngFor="let classObject of classesTeaching">
+                        <div (click)='goto(classObject.classId)' class='clickableDiv'>
+                        <!-- <class-thumb [classObject]=classObject></class-thumb> -->
+                        <app-class-thumb [classObject]=classObject [currentUser]='currentUser' [showTeachers]=true [showRegButtons]='showRegButtons' [users] ='users' [classes] ='classes' [courses] ='courses' [assignments]='assignments'></app-class-thumb>
+                </div>
+                        </div>
+
+        </div>
+
+        <div *ngIf='!showTaking && !showTeaching'>
+                <!-- <div class='welcome'>
+                Welcome to the Reclaiming Loom!  You have not yet registered for any classes.
+                <br>
+                See the list of upcoming classes!
+                </div> -->
+        </div>
+</div>

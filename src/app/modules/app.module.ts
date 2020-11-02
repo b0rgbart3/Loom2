@@ -25,40 +25,29 @@ import { MaterialService } from '../services/material.service';
 import { SeriesService } from '../services/series.service';
 import { SharedModule } from './shared.module';
 import { AdminModule } from './admin.module';
+import { EnrollmentsResolver } from '../resolvers/enrollments.resolver';
+import { StudentsComponent } from '../admin/components/students.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EnrollmentsService } from '../services/enrollments.service';
+import { HomeComponent } from '../components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
     WelcomeComponent,
-    ClassListComponent,
-    ClassThumbComponent
+    HomeComponent,
   ],
   imports: [
-    CommonModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    MatExpansionModule,
-    MatMenuModule,
-    SharedModule,
     AdminModule,
     AppRoutingModule,
+    SharedModule,
   ],
   providers: [
-    AssignmentsService,
-    ClassService,
-    CourseService,
-    UserService,
-    MaterialService,
-    MessageService,
-    SeriesService,
-    HttpClientModule,
-    LoomNotificationsService,
-    HttpClient,
-    Globals,
-    AssignmentsResolver,
-    ClassesResolver
+
+  ],
+  exports: [
+    SharedModule
   ],
   bootstrap: [AppComponent]
 })

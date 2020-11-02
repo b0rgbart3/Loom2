@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 // import { Http, Response, Headers, RequestOptions } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
-import { Globals } from '../globals';
+import { Globals } from '../../globals';
 
 
 import { Enrollment } from '../models/enrollment.model';

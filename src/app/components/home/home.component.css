@@ -1,0 +1,145 @@
+.tabContainer {
+    min-width:560px;
+}
+
+.selectorBox {
+    padding-left:8%;
+    padding-right:8%;
+    cursor:pointer;
+    margin:0;
+}
+
+.listOfClasses {
+    background-color:#2b3340;
+
+}
+
+.classCourseImageThumnail {
+    vertical-align: top;
+    width:40%;
+    max-width:650px;
+    display:inline-block;
+    margin-right:4px;
+    margin-bottom: 20px;
+
+}
+
+.classCourseImageThumnail img {
+    width:100%;
+
+}
+
+.classInfoSelectionCollection {
+    line-height:1.7em;
+}
+
+.classInfo {
+    vertical-align: top;
+    padding-left:12px;
+    width: 50%;
+    display:inline-block;
+    padding-top:0;
+    margin-top:-20px;
+}
+
+.classDates {
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.tabLabel {
+    font-size:1.14em;
+    letter-spacing: -.04em;
+    font-weight: 400;
+    color:#777777;
+    padding-left:4%;
+    padding-right:4%;
+    margin:0;
+    margin-bottom:.6em;
+    margin-top:.8em;
+
+   border-radius:8px 8px 0 0;
+   padding-top:8px;
+   margin-right:10px;
+   border-bottom:0;
+    display:inline-block;
+    float:left;
+    user-select: none;
+    cursor: pointer;
+    background-color:#212731;
+    padding-bottom:12px;
+    margin-bottom:0;
+}
+
+.tabLabelChosen {
+    font-size:1.14em;
+    letter-spacing: -.04em;
+    font-weight: 400;
+    color:#eeeeee;
+    padding-left:4%;
+    padding-right:4%;
+    margin:0;
+    margin-bottom:.6em;
+    margin-top:.8em;
+
+   border-radius:8px 8px 0 0;
+   padding-top:8px;
+   margin-right:10px;
+   border-bottom:0;
+    display:inline-block;
+    float:left;
+    user-select: none;
+    cursor: pointer;
+    background-color:#2b3340;
+    padding-bottom:12px;
+    margin-bottom:0;
+}
+
+h1.label {
+    font-size:1.4em;
+    letter-spacing: -.04em;
+    font-weight: 400;
+    color:#777777;
+    padding-left:8%;
+    margin:0;
+    margin-bottom:.6em;
+    margin-top:.8em;
+}
+.classInfoSelectionCollection h1 {
+    font-family: 'Josefin Sans';
+    font-weight:300;
+    font-size:2.75em;
+    text-transform: uppercase;
+    letter-spacing: -.05em;
+    line-height: 1.2em;
+    position: relative;
+    padding:0;
+    margin:0;
+    padding-top:12px;
+    box-sizing: border-box;
+    margin-top:.6em;
+    margin-bottom:.2em;
+    color:#000000;
+}
+p {
+    font-family: 'Muli';
+    font-weight:300;
+}
+
+@media (max-width: 740px) {
+    .classCourseImageThumnail {
+        width:100%;
+        display:block;
+        float:none;
+        margin-right:24px;
+        margin-bottom: 20px;
+    }
+
+    .classInfo {
+        width:100%;
+        display:block;
+        float:none;
+        padding:0;
+    }
+
+}
