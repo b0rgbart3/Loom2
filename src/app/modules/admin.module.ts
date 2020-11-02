@@ -16,6 +16,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatMenuModule } from '@angular/material/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
+import { InstructorsComponent } from '../admin/components/instructors.component';
+import { AssignmentsResolver } from '../resolvers/assignments.resolver';
+import { InstructorsResolver } from '../resolvers/instructors-resolver.service';
 
 const adminRoutes: Routes = [
 
@@ -27,6 +30,9 @@ const adminRoutes: Routes = [
             { path: '', redirectTo: 'classes', pathMatch: 'full' },
             { path: 'students', component: StudentsComponent, resolve: { users: UsersResolver,
                 classes: ClassesResolver, enrollments: EnrollmentsResolver }},
+            { path: 'instructors', component: InstructorsComponent,
+            resolve: { users: UsersResolver, instructors: InstructorsResolver,
+                classes: ClassesResolver, assignments: AssignmentsResolver }},
         ]
     },
 
@@ -42,12 +48,13 @@ const adminRoutes: Routes = [
         AdminComponent,
         StudentsComponent,
         EnrollmentsComponent,
+        InstructorsComponent,
     ],
     providers: [
         AdminRouteActivator,
     ],
     exports: [
-
+        SharedModule,
     ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA

@@ -1,0 +1,13 @@
+<mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+        <mat-panel-title>Instructors</mat-panel-title>
+    </mat-expansion-panel-header>
+<user-list [users]="instructors" *ngIf='instructors' [showInstructorChoice]="false" [showSuspensionChoice]='false'></user-list>   
+</mat-expansion-panel>
+<br>
+<mat-expansion-panel>
+    <mat-expansion-panel-header>
+        <mat-panel-title>Instructor Assignments</mat-panel-title>
+    </mat-expansion-panel-header>
+<app-assignments-component></app-assignments-component>
+</mat-expansion-panel>

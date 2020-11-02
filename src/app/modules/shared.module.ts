@@ -31,6 +31,7 @@ import { AuthGuard } from '../services/auth-guard.service';
 import { MessagesResolver } from '../resolvers/messages-resolver';
 import { UserThumbComponent } from '../components/users/user-thumb/user-thumb.component';
 import { SafePipe } from '../shared/safe.pipe';
+import { InstructorsResolver } from '../resolvers/instructors-resolver.service';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { SafePipe } from '../shared/safe.pipe';
     AssignmentsResolver,
     ClassesResolver,
     EnrollmentsResolver,
+    InstructorsResolver,
     { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true },
   ],
   exports: [
