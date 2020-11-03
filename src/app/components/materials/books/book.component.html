@@ -1,0 +1,19 @@
+<div class="bookContainer">
+  <!-- <div *ngIf='big' class='big group' (click)='goBig($event)' (clickOutside)='goSmall()'>
+                <img [src]='imageURL'>
+                <div class='acquire' (click)='open_modal(book.contenturl)'>Acquire this book&nbsp;&nbsp;
+                                <i class="fas fa-external-link-alt"></i><br>
+                </div>
+        </div> -->
+  <div class="bookInfoContainer" *ngIf="!big">
+    <div class="bookImageContainer">
+      <img [src]="imageURL" class="bookImage" />
+    </div>
+    <h1>{{ book.title }}</h1>
+    <h2>{{ book.author }}</h2>
+    <div class="acquire" (click)="open_modal(book.contenturl)">
+      Acquire this book&nbsp;&nbsp; <i class="fas fa-external-link-alt"></i
+      ><br />
+    </div>
+  </div>
+</div>

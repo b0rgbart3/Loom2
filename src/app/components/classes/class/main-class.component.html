@@ -13,7 +13,7 @@
         <div class="instructors group">
           <h2>Your Instructors</h2>
           <div *ngFor="let instructor of instructorThumbnails" class="userThumb" (click)="showBio(instructor.user)">
-            <user-thumb [thumbnail]="instructor"></user-thumb>
+            <app-user-thumb [thumbnail]="instructor"></app-user-thumb>
           </div>
         </div>
       </div>
@@ -23,8 +23,8 @@
           <div class="students group">
             <h1>Your Fellow Students</h1>
             <div *ngFor="let student of studentThumbnails; let i = index" class="userThumb">
-              <user-thumb [thumbnail]="student" class="button" (click)="showBio(student.user)">
-              </user-thumb>
+              <app-user-thumb [thumbnail]="student" class="button" (click)="showBio(student.user)">
+              </app-user-thumb>
             </div>
          
           </div>
@@ -107,7 +107,8 @@
               </div>
             </div>
             <div *ngIf="currentCourse.sections" class="section group">
-              <section-comp 
+            
+              <app-course-section-comp 
               [thisClass]='thisClass' 
               [course]='currentCourse' 
               [section]='section'
@@ -117,7 +118,7 @@
               [discussionSettings] = 'discussionSettings'
               [notesSettings] = 'notesSettings'
               >
-               </section-comp>
+               </app-course-section-comp>
 
             </div>
           </div>

@@ -29,7 +29,7 @@ import { CacheInterceptor } from '../resolvers/cache.interceptor';
 import { AuthGuard } from '../services/auth-guard.service';
 import { MessagesResolver } from '../resolvers/messages-resolver';
 import { SeriesResolver } from '../resolvers/series.resolver';
-import { UserThumbComponent } from '../components/users/user-thumb/user-thumb.component';
+import { UserThumbnailComponent } from '../components/users/user-thumb/user-thumbnail.component';
 import { SafePipe } from '../shared/safe.pipe';
 import { InstructorsResolver } from '../resolvers/instructors-resolver.service';
 import { UserListComponent } from '../admin/components/user-list.component';
@@ -49,14 +49,33 @@ import { NotesService } from '../services/notes.service';
 import { NotesSettingsResolver } from '../resolvers/notes-settings.resolver';
 import { DiscussionService } from '../services/discussion.service';
 import { DiscussionSettingsResolver } from '../resolvers/discussion-settings-resolver';
+import { MaterialCollectionComponent } from '../components/materials/material-collection/material-collection.component';
+import { BookComponent } from '../components/materials/books/book.component';
+import { ImageComponent } from '../components/materials/image/image.component';
+import { BlockComponent } from '../components/materials/block/block.component';
+import { QuoteComponent } from '../components/materials/quote/quote.component';
+import { DocComponent } from '../components/materials/doc/doc.component';
+import { AudioComponent } from '../components/materials/audio/audio.component';
+import { VideoComponent } from '../components/materials/video/video.component';
+import { DisplayMaterialsComponent } from '../components/materials/display-materials/display-mats.component';
 
 @NgModule({
   declarations: [
     ClassListComponent,
     ClassThumbComponent,
-    UserThumbComponent,
+    UserThumbnailComponent,
     UserListComponent,
     SafePipe,
+
+    DisplayMaterialsComponent,
+    MaterialCollectionComponent,
+    AudioComponent,
+    BookComponent,
+    ImageComponent,
+    VideoComponent,
+    BlockComponent,
+    QuoteComponent,
+    DocComponent,
   ],
   imports: [
     HttpClientModule,
@@ -111,9 +130,19 @@ import { DiscussionSettingsResolver } from '../resolvers/discussion-settings-res
   exports: [
     ClassListComponent,
     ClassThumbComponent,
-    UserThumbComponent,
+    UserThumbnailComponent,
     UserListComponent,
     SafePipe,
+
+    DisplayMaterialsComponent,
+    MaterialCollectionComponent,
+    AudioComponent,
+    BookComponent,
+    ImageComponent,
+    VideoComponent,
+    BlockComponent,
+    QuoteComponent,
+    DocComponent,
 
     HttpClientModule,
     CommonModule,

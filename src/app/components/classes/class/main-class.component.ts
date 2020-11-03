@@ -114,7 +114,7 @@ export class MainClassComponent implements OnInit {
     ngOnInit(): void {
 
         this.classID = this.activatedRoute.snapshot.params.id;
-        console.log('This class\'s ID: ', this.classID);
+     //   console.log('This class\'s ID: ', this.classID);
         this.currentMaterials = null;
         this.messaging = false;
         this.currentUser = this.userService.getCurrentUser();
@@ -172,7 +172,7 @@ export class MainClassComponent implements OnInit {
             dataError = true;
         } else {
             this.enrollments = resolvedEnrollmentData;
-            console.log('All Enrollments:', this.enrollments);
+          //  console.log('All Enrollments:', this.enrollments);
             this.enrollmentsService.takeInResolvedData(this.enrollments);
         }
 
@@ -224,7 +224,7 @@ export class MainClassComponent implements OnInit {
             dataError = true;
         } else {
             this.currentCourse = resolvedCurrentCourse[0];
-            console.log('This currentCourse: ', this.currentCourse);
+        //    console.log('This currentCourse: ', this.currentCourse);
           //  this.announcementsService.takeInResolvedData(this.announcements);
         }
 
@@ -235,7 +235,7 @@ export class MainClassComponent implements OnInit {
             dataError = true;
         } else {
             this.materials = resolvedMaterialData;
-            console.log('This Materials', this.materials);
+          //  console.log('This Materials', this.materials);
             this.materialService.takeInResolvedData(this.materials);
         }
 
@@ -261,9 +261,9 @@ export class MainClassComponent implements OnInit {
         // console.log('In the instructors resolver, classID:', thisClassId);
         const assignments = this.assignmentsService.getAssignmentsForClass(this.thisClass.classId);
 
-        console.log('found assignments:', assignments);
+       // console.log('found assignments:', assignments);
         const instructorIds = assignments.map( (inst) => inst.userId);
-        console.log('instructor ids:', instructorIds);
+       // console.log('instructor ids:', instructorIds);
       //  const thisClass = this.classService.getClass(thisClassId);
 
         // console.log('Activated class ID: ', thisClassId);
@@ -287,6 +287,8 @@ export class MainClassComponent implements OnInit {
        // console.log('Student list: ', this.students);
         this.studentThumbnails = this.students.map(student =>
                     this.createStudentThumbnail(student));
+
+        console.log('instructorThumbnails:', this.instructorThumbnails);
         // this.activatedRoute.params.subscribe(params => {
         //     this.onSectionChange(params.id2);
 
@@ -366,6 +368,8 @@ export class MainClassComponent implements OnInit {
 
             }
         });
+
+        console.log('End of main class component');
 
     }
 
@@ -447,7 +451,7 @@ export class MainClassComponent implements OnInit {
                 }
             }
         }
-        console.log('Material Sets:', this.materialSets);
+     //   console.log('Material Sets:', this.materialSets);
     }
     showBio(user): void {
         if (!this.showingBio) {

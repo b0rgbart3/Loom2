@@ -1,0 +1,15 @@
+.imageContainer {
+  
+}
+
+.containedImage {
+    max-width:100%;
+    min-width:40%;
+}
+
+p {
+    font-family: "Muli";
+    margin:0;
+    line-height: 1em;
+    margin-bottom:3em;
+}

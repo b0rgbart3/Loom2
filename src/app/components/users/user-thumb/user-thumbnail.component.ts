@@ -6,11 +6,11 @@ import { Globals } from '../../../../globals';
 
 @Component({
     selector: 'app-user-thumb',
-    templateUrl: './user-thumb.component.html',
-    styleUrls: ['./user-thumb.component.css'],
+    templateUrl: './user-thumbnail.component.html',
+    styleUrls: ['./user-thumbnail.component.css'],
 })
 
-export class UserThumbComponent implements OnInit {
+export class UserThumbnailComponent implements OnInit {
     @Input() thumbnail: Userthumbnail;
 
     userCount: number;
@@ -28,7 +28,7 @@ export class UserThumbComponent implements OnInit {
 
     ngOnInit(): void {
 
-        console.log('initializing user thumbnail');
+        console.log('initializing user thumbnail.');
         if (this.thumbnail) {
             if (!this.thumbnail.user) {
 

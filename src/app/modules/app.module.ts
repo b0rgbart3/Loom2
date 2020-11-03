@@ -31,6 +31,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EnrollmentsService } from '../services/enrollments.service';
 import { HomeComponent } from '../components/home/home.component';
 import { MainClassComponent } from '../components/classes/class/main-class.component';
+import { CourseSectionComponent } from '../components/courses/course/course-section.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { MainClassComponent } from '../components/classes/class/main-class.compo
     WelcomeComponent,
     HomeComponent,
     MainClassComponent,
+    CourseSectionComponent,
   ],
   imports: [
     AdminModule,

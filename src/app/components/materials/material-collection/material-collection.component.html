@@ -1,0 +1,103 @@
+
+<div *ngIf="materialcollection" class='materialCollection'>
+
+    <div *ngIf="materialcollection.books">
+    
+        <div *ngFor="let book of materialcollection.books; let i = index" class='bookWrap'>
+            <app-book-component [book]="book"></app-book-component>
+        </div>
+    </div>
+    
+    <div *ngIf="materialcollection.videos">
+      
+        <div *ngFor="let vid of materialcollection.videos; let i = index" class='videoWrap'>
+            <app-video-component [videoObject]="vid"></app-video-component>
+        </div>
+    </div>
+
+    <div *ngIf="materialcollection.audios">
+     
+        <div *ngFor="let audioObject of materialcollection.audios; let i = index" class='audioWrap'>
+            
+            <app-audio-component [audioObject]="audioObject"></app-audio-component>
+        </div>
+    </div>
+    <div *ngIf="materialcollection.images">
+            Images:
+            <div *ngFor="let thisImage of materialcollection.images; let i = index" class='videoWrap'>
+                <app-image-component [imageObject]="thisImage"></app-image-component>
+            </div>
+        </div>    
+    <div *ngIf="materialcollection.docs" class='endPiece'>
+          
+            <div *ngFor="let documentObject of materialcollection.docs; let i = index"
+             class='documentWrap group'>
+           
+                <!-- <a [href]="documentObject.fileURL" target='_blank'> -->
+                <div (click)='open_modal(documentObject)' class='group'>
+                    <div *ngIf='documentObject.imageURL'>
+                         <div class='documentImage' 
+                [ngStyle]="{ 'background-image': 'url(' + documentObject.imageURL + ')'}"
+                *ngIf="documentObject.imageURL"></div>
+                        <div class='documentImage'  *ngIf="!documentObject.imageURL"></div>
+                        </div>
+                       
+                        <h1>{{documentObject.title}}</h1>
+                        <h2>{{documentObject.author}}</h2>
+                         <!-- <p>{{ documentObject.fileURL }}</p> -->
+                        <p>{{ documentObject.description }}</p>
+                        <p class='length'>{{ documentObject.length }}</p>
+                    </div>
+                </div>
+           
+
+            </div>
+    </div>
+    
+    <!-- <div *ngIf="materialcollection.books && (materialcollection.books.length > 0)">
+            <books [books]="materialcollection.books"></books>
+
+
+        </div> -->
+
+        <div *ngIf="materialcollection.blocks && (materialcollection.blocks.length > 0)">
+            
+                 <div *ngFor="let block of materialcollection.blocks; let k=index">
+                        
+
+                            <block [block]="materialcollection.blocks[k]"></block> 
+
+                 </div>
+            
+                  
+ 
+        </div>
+          
+<div *ngIf='displayModal' class='modal'>
+    <modal [modalURL]='modalURL' (closeMe)="closeModal($event)"></modal>
+
+    <!-- <modal  title="Modal title"
+        cancelButtonLabel="cancel"
+        submitButtonLabel="submit"
+        modalClass="modal-lg modal-sm any-other-css-class"
+        [hideCloseButton]="true|false"
+        [closeOnEscape]="true|false"
+        [closeOnOutsideClick]="true|false"
+        (onOpen)="actionOnOpen()"
+        (onClose)="actionOnClose()"
+        (onSubmit)="actionOnSubmit()">
+ 
+    <modal-header>
+        Modal header content goes there.
+    </modal-header>
+ 
+    <modal-content>
+        Modal body content goes there.
+    </modal-content>
+ 
+    <modal-footer>
+        Modal footer content goes there.
+    </modal-footer>
+        
+</modal> -->
+    </div>
