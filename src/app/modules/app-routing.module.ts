@@ -1,7 +1,9 @@
-import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from '../admin/home/admin.component';
-import { ClassComponent } from '../components/classes/class/class.component';
+import { MainClassComponent } from '../components/classes/class/main-class.component';
 import { HomeComponent } from '../components/home/home.component';
 import { WelcomeComponent } from '../components/welcome/welcome.component';
 import { AllMaterialsResolver } from '../resolvers/all-materials.resolver';
@@ -32,23 +34,12 @@ const routes: Routes = [
       }
     },
     {
-      path: 'classes', component: HomeComponent, canActivate: [AuthGuard],
-      resolve: {
-        resolvedUsers: UsersResolver,
-        resolvedClasses: ClassesResolver,
-        resolvedCourses: CoursesResolver,
-        resolvedEnrollments: EnrollmentsResolver,
-        resolvedAssignments: AssignmentsResolver,
-        resolvedMessages: MessagesResolver
-      }
-    },
-    {
       path: 'classes/:id', canActivate: [AuthGuard], resolve: {
         classes: ClassesResolver,
         courses: CoursesResolver,
       },
       children: [{
-        path: ':id2', pathMatch: 'full', component: ClassComponent,
+        path: ':id2', pathMatch: 'full', component: MainClassComponent,
         resolve: {
           resolvedUsers: UsersResolver,
           resolvedClasses: ClassesResolver,
@@ -64,6 +55,17 @@ const routes: Routes = [
         }
       }]
     },
+    {
+      path: 'classes', component: HomeComponent, canActivate: [AuthGuard],
+      resolve: {
+        resolvedUsers: UsersResolver,
+        resolvedClasses: ClassesResolver,
+        resolvedCourses: CoursesResolver,
+        resolvedEnrollments: EnrollmentsResolver,
+        resolvedAssignments: AssignmentsResolver,
+        resolvedMessages: MessagesResolver
+      }
+    },
 
     {path: '', redirectTo: 'welcome', pathMatch: 'full'},
     {path: '**', component: WelcomeComponent},
@@ -72,7 +74,14 @@ const routes: Routes = [
 
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes),
+  CommonModule,
+  BrowserModule
+  ],
+  exports: [RouterModule],
+  schemas: [
+      CUSTOM_ELEMENTS_SCHEMA
+  ]
+
 })
 export class AppRoutingModule { }

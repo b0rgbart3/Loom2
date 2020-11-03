@@ -1,6 +1,5 @@
-
 <div class="loomContainer">
-  <div *ngIf="currentCourse">
+ <div *ngIf="currentCourse">   
     <div *ngIf="courseimageURL" class="mainImage group"
       [ngStyle]="{ 'background-image': 'url(\' ' + courseimageURL + ' \')' }">
       <div class="topContent group">
@@ -27,9 +26,9 @@
               <user-thumb [thumbnail]="student" class="button" (click)="showBio(student.user)">
               </user-thumb>
             </div>
-            <!-- end of thumbnails -->
+         
           </div>
-          <!-- end of student group -->
+    
 
           <div *ngIf="currentCourse && !messaging">
             <div class="classNavBar">
@@ -92,8 +91,7 @@
 
             <make-announcement *ngIf="showingAnnouncementsForm" (close)="closeAnnoucementsForm($event)"
               [instructorID]="currentUser.id" [classID]="thisClass.id"></make-announcement>
-            <!-- currentUser.id: {{currentUser.id }}<br>
-                thisClass.id {{ thisClass.id }} <br> -->
+     
             <div class="announcementBox" *ngIf="showingAnnouncements">
               <div class="closeAnnouncements" (click)="hideAnnouncements()"></div>
               <h1>
@@ -121,9 +119,6 @@
               >
                </section-comp>
 
-              <!-- <section-comp [thisClass]="thisClass" [course]="currentCourse" [section]="section" [students]="students"
-                [instructors]="instructors" [materialSets]="currentMaterials" [discussionSettings]="discussionSettings"
-                [notesSettings]="notesSettings"></section-comp> -->
             </div>
           </div>
         </div>
@@ -133,5 +128,5 @@
     <div class="popBio" *ngIf="showingBio">
       <bio-pop [bioUser]="bioChosen" (closeMe)="closeBio($event)" (messageMe)="message($event)"></bio-pop>
     </div>
-  </div>
+  </div> 
 </div>

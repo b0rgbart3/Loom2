@@ -34,12 +34,12 @@ import { DataError } from 'src/app/models/dataerror.model';
 
 @Component({
 
-    templateUrl: './class.component.html',
-    styleUrls: ['./class.component.css', './bios.css'],
+    templateUrl: './main-class.component.html',
+    styleUrls: ['./main-class.component.css', './bios.css'],
     providers: [CourseService]
 })
 
-export class ClassComponent implements OnInit {
+export class MainClassComponent implements OnInit {
 
     // @Output() sendMsg: EventEmitter<{}> = new EventEmitter<{}>();
     classID: string;
@@ -224,7 +224,7 @@ export class ClassComponent implements OnInit {
             dataError = true;
         } else {
             this.currentCourse = resolvedCurrentCourse[0];
-          //  console.log('This currentCourse: ', this.currentCourse);
+            console.log('This currentCourse: ', this.currentCourse);
           //  this.announcementsService.takeInResolvedData(this.announcements);
         }
 

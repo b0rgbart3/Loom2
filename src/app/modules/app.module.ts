@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from '../components/app/app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -30,6 +30,7 @@ import { StudentsComponent } from '../admin/components/students.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EnrollmentsService } from '../services/enrollments.service';
 import { HomeComponent } from '../components/home/home.component';
+import { MainClassComponent } from '../components/classes/class/main-class.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { HomeComponent } from '../components/home/home.component';
     NavBarComponent,
     WelcomeComponent,
     HomeComponent,
+    MainClassComponent,
   ],
   imports: [
     AdminModule,
@@ -49,6 +51,9 @@ import { HomeComponent } from '../components/home/home.component';
   exports: [
     SharedModule
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [
+      CUSTOM_ELEMENTS_SCHEMA
+  ]
 })
 export class AppModule { }

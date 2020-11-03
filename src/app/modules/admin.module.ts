@@ -82,6 +82,7 @@ const adminRoutes: Routes = [
     imports: [
         RouterModule.forChild(adminRoutes),
         SharedModule,
+        CommonModule,
     ],
     declarations: [
         AdminComponent,
