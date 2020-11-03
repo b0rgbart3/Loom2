@@ -244,7 +244,7 @@ margin:0;
     float:right;
     width:78px;
     height:74px;
-    background-image:url('../../../assets/images/right.svg');
+    background-image:url('../../../../assets/images/right.svg');
     vertical-align: top;
     opacity:.6;
     background-size:70%;
@@ -269,7 +269,7 @@ margin:0;
     float:right;
     width:78px;
     height:74px;
-    background-image:url('../../../assets/images/left.svg');
+    background-image:url('../../../../assets/images/left.svg');
     vertical-align: top;
     opacity:.6;
     background-size:70%;
@@ -476,7 +476,7 @@ margin:0;
 }
 
 .closeAnnouncements {
-    background-image:url('../../../assets/images/closer_green.svg');
+    background-image:url('../../../../assets/images/closer_green.svg');
     width:24px;
     height:24px;
     display:inline-block;

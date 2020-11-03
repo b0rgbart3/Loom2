@@ -41,6 +41,14 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { Announcements } from '../models/announcements.model';
+import { AnnouncementsService } from '../services/announcements.service';
+import { AnnouncementsResolver } from '../resolvers/announcements.resolver';
+import { AllAnnouncementsResolver } from '../resolvers/allannouncements.resolver';
+import { NotesService } from '../services/notes.service';
+import { NotesSettingsResolver } from '../resolvers/notes-settings.resolver';
+import { DiscussionService } from '../services/discussion.service';
+import { DiscussionSettingsResolver } from '../resolvers/discussion-settings-resolver';
 
 @NgModule({
   declarations: [
@@ -69,26 +77,35 @@ import { MatIconModule } from '@angular/material/icon';
   ],
   providers: [
     AuthGuard,
+    AnnouncementsService,
     AssignmentsService,
     ClassService,
     CourseService,
+    DiscussionService,
     EnrollmentsService,
     UserService,
     MaterialService,
     MessageService,
+    NotesService,
     SeriesService,
     HttpClientModule,
     LoomNotificationsService,
+
+    AssignmentsResolver,
+    ClassesResolver,
+    DiscussionSettingsResolver,
+    EnrollmentsResolver,
+    InstructorsResolver,
+    AnnouncementsResolver,
+    AllAnnouncementsResolver,
     EnrollmentsResolver,
     MessagesResolver,
+    NotesSettingsResolver,
     SeriesResolver,
 
     HttpClient,
     Globals,
-    AssignmentsResolver,
-    ClassesResolver,
-    EnrollmentsResolver,
-    InstructorsResolver,
+
     { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true },
   ],
   exports: [
