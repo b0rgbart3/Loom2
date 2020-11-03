@@ -27,6 +27,8 @@ import { ContentComponent } from '../admin/components/content.component';
 import { SeriesResolver } from '../resolvers/series.resolver';
 import { MaterialsAdminComponent } from '../admin/components/materials-admin.component';
 import { MaterialsResolver } from '../resolvers/materials-resolver';
+import { CourseEditComponent } from '../admin/components/course-edit.component';
+import { FileSelectDirective, FileUploadModule } from 'ng2-file-upload';
 
 const adminRoutes: Routes = [
 
@@ -83,6 +85,9 @@ const adminRoutes: Routes = [
         RouterModule.forChild(adminRoutes),
         SharedModule,
         CommonModule,
+        FileUploadModule
+
+
     ],
     declarations: [
         AdminComponent,
@@ -92,7 +97,10 @@ const adminRoutes: Routes = [
         AssignmentsComponent,
         ClassEditComponent,
         ContentComponent,
-        MaterialsAdminComponent
+        MaterialsAdminComponent,
+        CourseEditComponent,
+
+
     ],
     providers: [
         AdminRouteActivator,
