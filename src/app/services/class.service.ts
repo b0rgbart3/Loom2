@@ -54,6 +54,7 @@ export class ClassService {
   }
 
 
+  // This doesn't currently pass the ID to the API -- this needs to be worked on.
   getClass(id): Observable<ClassModel> {
     return this.http.get<ClassModel>(this.globals.class);
   }

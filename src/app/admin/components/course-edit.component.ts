@@ -125,8 +125,10 @@ export class CourseEditComponent implements OnInit {
 
         // console.log('About to Edit Course ID: ' + this.id);
 
-        this.course = this.activatedRoute.snapshot.data.course;
-        // console.log('Course: ' + JSON.stringify(this.course));
+        this.course = this.activatedRoute.snapshot.data.course[0];
+        console.log('Course: ', this.course);
+
+
         this.allpossiblematerials = this.activatedRoute.snapshot.data.materials;
 
         if (this.id !== '0' && (this.course.image !== '')) {
@@ -347,6 +349,8 @@ export class CourseEditComponent implements OnInit {
     }
 
     deLintMe(): void {
+        console.log('In deLintMe, course: ', this.course);
+
         this.course.sections.forEach((section) => {
             const sc = section.content;
             if (sc) {

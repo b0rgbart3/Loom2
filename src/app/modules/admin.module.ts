@@ -29,6 +29,8 @@ import { MaterialsAdminComponent } from '../admin/components/materials-admin.com
 import { MaterialsResolver } from '../resolvers/materials-resolver';
 import { CourseEditComponent } from '../admin/components/course-edit.component';
 import { FileSelectDirective, FileUploadModule } from 'ng2-file-upload';
+import { CourseResolver } from '../resolvers/course.resolver';
+import { CourseEditGuard } from '../services/course-edit-guard.service';
 
 const adminRoutes: Routes = [
 
@@ -66,10 +68,11 @@ const adminRoutes: Routes = [
                 resolve: {
                     courses: CoursesResolver,
                     materials: MaterialsResolver}},
-            // { path: 'courses/:id/edit', pathMatch: 'full', component: CourseEditComponent,
-            // canDeactivate: [ CourseEditGuard ],
-            // resolve: { course: CourseResolver,
-            //     allmaterials: AllMaterialsResolver }},
+            { path: 'courses/:id/edit', pathMatch: 'full', component: CourseEditComponent,
+             canDeactivate: [ CourseEditGuard ],
+                 resolve: {
+                      course: CourseResolver,
+                      allmaterials: MaterialsResolver }},
             // { path: 'courseObjects/:id/edit', pathMatch: 'full', component: CourseObjectEditComponent,
             // canDeactivate: [ CourseObjectEditGuard ],
             // resolve: { course: CourseResolver,
@@ -96,6 +99,7 @@ const adminRoutes: Routes = [
         InstructorsComponent,
         AssignmentsComponent,
         ClassEditComponent,
+        CourseEditComponent,
         ContentComponent,
         MaterialsAdminComponent,
         CourseEditComponent,
@@ -104,6 +108,7 @@ const adminRoutes: Routes = [
     ],
     providers: [
         AdminRouteActivator,
+        CourseEditGuard,
     ],
     exports: [
         SharedModule,

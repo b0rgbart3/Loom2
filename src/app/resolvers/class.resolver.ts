@@ -34,7 +34,7 @@ export class ClassResolver implements Resolve <ClassModel | DataError> {
 
       //  console.log('In the class-course resolver: ');
         const thisClassId = route.params.id;
-       // console.log('Activated class ID: ', thisClassId);
+        console.log('Activated class ID: ', thisClassId);
       //  const thisClass = route.parent.data.classes.filter( aClass => aClass.classId === thisClassId)[0];
       //  console.log('Activated route snapshot ClassObject: ', thisClass);
         return this.classService.getClass(thisClassId)

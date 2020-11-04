@@ -23,10 +23,10 @@
         </mat-expansion-panel-header>
     
         <mat-list>
-            <mat-list-item [routerLink]="['/admin/courseObjects', 0, 'edit']">
+            <mat-list-item [routerLink]="['/admin/courses', 0, 'edit']">
                 <mat-icon class="example-icon">add</mat-icon> Add a new Course
             </mat-list-item>
-            <mat-list-item *ngFor='let course of courseArray' [routerLink]="['/admin/courseObjects',course.id,'edit']">
+            <mat-list-item *ngFor='let course of courseArray' [routerLink]="['/admin/courses',course.courseId,'edit']">
                 {{ course.title }}
             </mat-list-item>
         </mat-list>
@@ -42,7 +42,7 @@
                 <mat-list-item [routerLink]="['0/edit']">
                     <mat-icon class="example-icon">add</mat-icon> Add a new Class
                 </mat-list-item>
-                <mat-list-item *ngFor='let classObject of classArray' [routerLink]="[classObject.id,'edit']">
+                <mat-list-item *ngFor='let classObject of classArray' [routerLink]="[classObject.classId,'edit']">
                     {{ classObject.title }}
                 </mat-list-item>
             </mat-list>

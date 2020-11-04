@@ -45,10 +45,13 @@ export class ClassEditComponent implements OnInit {
 
         console.log('The ID for this new class is: ' + id);
 
-        this.thisClass = this.activatedRoute.snapshot.data.thisClass;
+        this.thisClass = this.activatedRoute.snapshot.data.thisClass.filter((classObject) => classObject.classId === id)[0];
+        console.log('this class: ', this.thisClass);
+
+
         this.courses = this.activatedRoute.snapshot.data.courses;
 
-        console.log('In Class Edit Component: thisClass = ' + JSON.stringify(this.thisClass));
+        console.log('In Class Edit Component: thisClass = ', this.thisClass);
 
         this.classForm = this.fb.group({
             title: [ '' , []],
@@ -60,6 +63,7 @@ export class ClassEditComponent implements OnInit {
         });
 
 
+        this.courseSelections = [{}];
         if (this.courses) {
             this.courses.forEach( (course) => {
                 console.log(course.title);
@@ -68,7 +72,8 @@ export class ClassEditComponent implements OnInit {
                 this.courseSelections.push( newObject );
             });
 
-            console.log('course selections: ' + JSON.stringify(this.courseSelections) );
+            this.courseSelections.shift();
+            console.log('course selections: ', this.courseSelections );
         }
 
        // this.buildInstructorChoices();
