@@ -9,8 +9,8 @@ import { UserService } from '../../services/user.service';
 import { Globals } from '../../../globals';
 import * as io from 'socket.io-client';
 import { Observable } from 'rxjs';
-import { Message } from '../../models/message.model';
-import { MessageService } from '../../services/message.service';
+// import { Message } from '../../models/message.model';
+// import { MessageService } from '../../services/message.service';
 // import { Message } from '../models/message.model';
 // import { Userthumbnail } from '../models/userthumbnail.model';
 
@@ -35,10 +35,10 @@ export class NavBarComponent implements OnInit, DoCheck {
   avatarExists: boolean;
   private showAvatarMenu: boolean;
 
-  private socket: io.Socket;
+  // private socket: io.Socket;
   currentUser: User;
-  messages: Message[];  // all messages for current user
-  freshMessages: Message[];
+ // messages: Message[];  // all messages for current user
+  // freshMessages: Message[];
 
 
   constructor(
@@ -48,7 +48,7 @@ export class NavBarComponent implements OnInit, DoCheck {
     private sanitizer: DomSanitizer,
     // private FB: FacebookService,
     private globals: Globals,
-    private messageService: MessageService
+    // private messageService: MessageService
   ) {
   }
 
@@ -106,75 +106,75 @@ export class NavBarComponent implements OnInit, DoCheck {
       //   console.log('current user: ' + JSON.stringify(this.currentUser));
       this.admin = this.currentUser.admin;
     }
-    this.socket = io(this.globals.basepath);
-    this.socket.on('userSettingsChanged', (user) => {
-      this.currentUser = user;
-      this.admin = this.currentUser.admin;
-      this.showingMessageList = false;
-      // console.log('avatar changed');
-      // setTimeout(this.generateAvatarPath, 3000);
-      //   setTimeout(() => { this.generateAvatarPath(); }, 3000);
-      //      this.generateAvatarPath();
-    });
-    this.socket.on('userChanged', (user: User) => {
-      this.currentUser = user;
-      this.admin = this.currentUser.admin;
-      this.showingMessageList = false;
-      this.generateAvatarPath();
-    });
+    // this.socket = io(this.globals.basepath);
+    // this.socket.on('userSettingsChanged', (user) => {
+    //   this.currentUser = user;
+    //   this.admin = this.currentUser.admin;
+    //   this.showingMessageList = false;
+    //   // console.log('avatar changed');
+    //   // setTimeout(this.generateAvatarPath, 3000);
+    //   //   setTimeout(() => { this.generateAvatarPath(); }, 3000);
+    //   //      this.generateAvatarPath();
+    // });
+    // this.socket.on('userChanged', (user: User) => {
+    //   this.currentUser = user;
+    //   this.admin = this.currentUser.admin;
+    //   this.showingMessageList = false;
+    //   this.generateAvatarPath();
+    // });
 
-    this.socket.on('messageChanged', (message: Message) => {
-      this.showingMessageList = false;
-      // this.checkFresh();
+    // this.socket.on('messageChanged', (message: Message) => {
+    //   this.showingMessageList = false;
+    //   // this.checkFresh();
 
-    });
+    // });
 
   }
 
   checkFresh(): void {
     // console.log('About to check messages for: ' +
     //  this.userService.currentUser.id);
-    this.messageService.getMessagesForUser(this.userService.currentUser.id).
-      subscribe(
-        data => {
-          //   console.log('got messages for user: ' + JSON.stringify(data));
-          this.messages = data;
-          if (this.messages && this.messages.length > 0) {
-            // console.log('length was greater than zero.');
-            this.buildMessageList();
-            this.freshMessages = null;
-            this.messageService.getFreshList(this.userService.currentUser.id).
-              subscribe(
-                fresh => {
-                  //    console.log('got fresh list: ' + JSON.stringify(fresh));
-                  this.freshMessages = fresh;
-                  if (this.freshMessages && this.freshMessages.length > 0) {
-                    this.buildFreshMessageList();
-                  } else {
-                    this.freshList = null;
-                    // this.messageListStyle = 'quickMessagesButton';
-                  }
-                },
-                error => { console.log('error getting fresh list.'); }
-              );
+    // this.messageService.getMessagesForUser(this.userService.currentUser.id).
+    //   subscribe(
+    //     data => {
+    //       //   console.log('got messages for user: ' + JSON.stringify(data));
+    //       this.messages = data;
+    //       if (this.messages && this.messages.length > 0) {
+    //         // console.log('length was greater than zero.');
+    //         this.buildMessageList();
+    //         this.freshMessages = null;
+    //         this.messageService.getFreshList(this.userService.currentUser.id).
+    //           subscribe(
+    //             fresh => {
+    //               //    console.log('got fresh list: ' + JSON.stringify(fresh));
+    //               this.freshMessages = fresh;
+    //               if (this.freshMessages && this.freshMessages.length > 0) {
+    //                 this.buildFreshMessageList();
+    //               } else {
+    //                 this.freshList = null;
+    //                 // this.messageListStyle = 'quickMessagesButton';
+    //               }
+    //             },
+    //             error => { console.log('error getting fresh list.'); }
+    //           );
 
-          }
-        },
-        error => { console.log('error getting messages.'); }
-      );
+    //       }
+    //     },
+    //     error => { console.log('error getting messages.'); }
+    //   );
 
   }
 
   openMsg(msg): void {
     //  console.log('Trying to open message for: ' + JSON.stringify(msg));
-    this.messageService.sendMessage(msg);
+  //  this.messageService.sendMessage(msg);
   }
 
   buildMsgLine(msg): any {
     // copy the users array
     // console.log('About to build, based on: ' + JSON.stringify(msg));
     const userArray = msg.users;
-    const originalMsg = new Message(msg.id, msg.users, msg.freshness, msg.msgList);
+   // const originalMsg = new Message(msg.id, msg.users, msg.freshness, msg.msgList);
 
     // find the current user's id in that array
     const index = userArray.indexOf(this.userService.currentUser.id);
@@ -201,24 +201,24 @@ export class NavBarComponent implements OnInit, DoCheck {
 
     // console.log('Building MSGLine: ' + JSON.stringify(msg));
 
-    let thismessage = '';
-    if (msg.msgList.length !== 0) {
-      thismessage = msg.msgList[msg.msgList.length - 1].message;
-      return {
-        thumbnail: thumbnailObj, msg: originalMsg,
-        last_message: thismessage
-      };
-    } else { return null; }
+    // let thismessage = '';
+    // if (msg.msgList.length !== 0) {
+    //   thismessage = msg.msgList[msg.msgList.length - 1].message;
+    //   return {
+    //     thumbnail: thumbnailObj, msg: originalMsg,
+    //     last_message: thismessage
+    //   };
+    // } else { return null; }
   }
 
   buildMessageList(): void {
 
     // console.log('In build Message List: ' + JSON.stringify(this.messages));
-    if (this.messages) {
-      //   console.log('mapping');
-      this.list = this.messages.map(msg => this.buildMsgLine(msg));
-      this.list = this.list.filter(n => n !== null);
-    }
+    // if (this.messages) {
+    //   //   console.log('mapping');
+    //   this.list = this.messages.map(msg => this.buildMsgLine(msg));
+    //   this.list = this.list.filter(n => n !== null);
+    // }
     if (this.list.length < 1) {
       this.list = null;
     }
@@ -230,36 +230,36 @@ export class NavBarComponent implements OnInit, DoCheck {
     // actually have any message info.
     // This happens when the user starts to send a message, but then doesn't complete it.
 
-    if (this.freshMessages) {
+    // if (this.freshMessages) {
 
-      //  console.log('checking for empty fresh messages');
+    //   //  console.log('checking for empty fresh messages');
 
-      for (let i = 0; i < this.freshMessages.length; i++) {
-        const aMsg = this.freshMessages[i];
-        //  console.log('Fresh message: ' + i + ', ' + aMsg.id);
-        //  console.log('msgList' + JSON.stringify(aMsg.msgList));
-        if (aMsg.msgList && aMsg.msgList.length < 1) {
-          // ok so this is a 'fake-start' of a new message, so let's ignore it
-          //    console.log('Found an empty message.');
-          //    console.log('FreshMessages before Splice: ' + JSON.stringify(this.freshMessages));
-          this.freshMessages.splice(i, 1);
-          //   console.log('FreshMessages after Splice: ' + JSON.stringify(this.freshMessages));
-        }
-      }
-      //   console.log('FreshMessages before leaving this block: ' + JSON.stringify(this.freshMessages));
-    }
-    // console.log('About to build freshList, based on: ' + JSON.stringify( this.freshMessages ) );
-    if (this.freshMessages && (this.freshMessages.length > 0)) {
+    //   for (let i = 0; i < this.freshMessages.length; i++) {
+    //     const aMsg = this.freshMessages[i];
+    //     //  console.log('Fresh message: ' + i + ', ' + aMsg.id);
+    //     //  console.log('msgList' + JSON.stringify(aMsg.msgList));
+    //     if (aMsg.msgList && aMsg.msgList.length < 1) {
+    //       // ok so this is a 'fake-start' of a new message, so let's ignore it
+    //       //    console.log('Found an empty message.');
+    //       //    console.log('FreshMessages before Splice: ' + JSON.stringify(this.freshMessages));
+    //       this.freshMessages.splice(i, 1);
+    //       //   console.log('FreshMessages after Splice: ' + JSON.stringify(this.freshMessages));
+    //     }
+    //   }
+    //   //   console.log('FreshMessages before leaving this block: ' + JSON.stringify(this.freshMessages));
+    // }
+    // // console.log('About to build freshList, based on: ' + JSON.stringify( this.freshMessages ) );
+    // if (this.freshMessages && (this.freshMessages.length > 0)) {
 
-      this.freshList = this.freshMessages.map(msg => this.buildMsgLine(msg));
+    //   this.freshList = this.freshMessages.map(msg => this.buildMsgLine(msg));
 
-      this.checkForDups();
-    }
-    if (this.freshList.length < 1) {
-      this.freshList = null;
-    } else {
-      this.messageListStyle = 'quickMessagesButtonFresh';
-    }
+    //   this.checkForDups();
+    // }
+    // if (this.freshList.length < 1) {
+    //   this.freshList = null;
+    // } else {
+    //   this.messageListStyle = 'quickMessagesButtonFresh';
+    // }
   }
 
   checkForDups(): void {
@@ -297,19 +297,19 @@ export class NavBarComponent implements OnInit, DoCheck {
   }
 
   closeMessageList(): void {
-    if (this.showingMessageList) {
-      this.showingMessageList = false;
+    // if (this.showingMessageList) {
+    //   this.showingMessageList = false;
 
-      if (this.freshMessages && this.freshMessages.length > 0) {
-        // this.buildFreshMessageList();
-        this.messageListStyle = 'quickMessagesButtonFresh';
-      } else {
-        // this.freshList = null;
-        this.messageListStyle = 'quickMessagesButton';
-      }
+    //   if (this.freshMessages && this.freshMessages.length > 0) {
+    //     // this.buildFreshMessageList();
+    //     this.messageListStyle = 'quickMessagesButtonFresh';
+    //   } else {
+    //     // this.freshList = null;
+    //     this.messageListStyle = 'quickMessagesButton';
+    //   }
 
 
-    }
+    // }
   }
 
   // updateUrl( event ) {

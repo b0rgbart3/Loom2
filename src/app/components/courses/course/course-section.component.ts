@@ -9,7 +9,7 @@ import { Book } from '../../../models/book.model';
 import { Doc } from '../../../models/doc.model';
 import { ClassModel } from '../../../models/classModel.model';
 import { UserService } from '../../../services/user.service';
-import { DiscussionService } from '../../../services/discussion.service';
+// import { DiscussionService } from '../../../services/discussion.service';
 import { DiscussionSettings } from '../../../models/discussionsettings.model';
 import { User } from '../../../models/user.model';
 import { NotesSettings } from '../../../models/notessettings.model';
@@ -41,7 +41,7 @@ export class CourseSectionComponent implements OnInit, OnChanges {
     public docs: Material [];
     errorMessage: string;
     constructor(private materialService: MaterialService,
-                private discussionService: DiscussionService,
+            //    private discussionService: DiscussionService,
                 private userService: UserService,
         ) {}
 

@@ -12,7 +12,7 @@ import { ClassesResolver } from '../resolvers/classes.resolver';
 import { ClassService } from '../services/class.service';
 import { AssignmentsResolver } from '../resolvers/assignments.resolver';
 import { Globals } from 'src/globals';
-import { MessageService } from '../services/message.service';
+// import { MessageService } from '../services/message.service';
 import { LoomNotificationsService } from '../services/loom.notifications.service';
 import { UserService } from '../services/user.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';

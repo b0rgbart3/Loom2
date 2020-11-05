@@ -16,18 +16,18 @@ import { Userthumbnail } from '../../../models/userthumbnail.model';
 import { BoardSettings } from '../../../models/boardsettings.model';
 import { Globals } from '../../../../globals';
 import { MaterialCollection } from '../../../models/materialcollection.model';
-import { DiscussionSettings } from '../../../models/discussionsettings.model';
-import { DiscussionService } from '../../../services/discussion.service';
+// import { DiscussionSettings } from '../../../models/discussionsettings.model';
+// import { DiscussionService } from '../../../services/discussion.service';
 import { Enrollment } from '../../../models/enrollment.model';
 import { EnrollmentsService } from '../../../services/enrollments.service';
 import { NotesSettings } from '../../../models/notessettings.model';
 // import { ClickOutsideDirective } from '../../../directives/clickoutside.directive';
-import { MessageService } from '../../../services/message.service';
+// import { MessageService } from '../../../services/message.service';
 import { AssignmentsService } from '../../../services/assignments.service';
 
 import { Assignment } from '../../../models/assignment.model';
 import { MaterialSet } from '../../../models/materialset.model';
-import { Message } from '../../../models/message.model';
+// import { Message } from '../../../models/message.model';
 import { Announcements } from '../../../models/announcements.model';
 import { AnnouncementsService } from '../../../services/announcements.service';
 import { DataError } from 'src/app/models/dataerror.model';
@@ -57,7 +57,7 @@ export class MainClassComponent implements OnInit {
     instructorIDList: string[];
     instructorCount = 0;
     studentCount = 0;
-    messages: Message[];
+    // messages: Message[];
     materials = [];
     sectionNumber: number;
     section: Section;
@@ -72,7 +72,7 @@ export class MainClassComponent implements OnInit {
     currentUserIsInstructor: boolean;
     COURSE_IMAGE_PATH: string;
     AVATAR_IMAGE_PATH: string;
-    discussionSettings: DiscussionSettings[];
+    // discussionSettings: DiscussionSettings[];
     classMaterials: Material[];
     notesSettings: NotesSettings;
     messaging: boolean;
@@ -93,10 +93,10 @@ export class MainClassComponent implements OnInit {
                 private courseService: CourseService,
                 private userService: UserService,
                 private materialService: MaterialService,
-                private discussionService: DiscussionService,
+                // private discussionService: DiscussionService,
                 private enrollmentsService: EnrollmentsService,
                 private assignmentsService: AssignmentsService,
-                private messageService: MessageService,
+               // private messageService: MessageService,
                 private globals: Globals,
                 private announcementsService: AnnouncementsService) {
     }
@@ -188,25 +188,25 @@ export class MainClassComponent implements OnInit {
             this.courseService.takeInResolvedData(this.courses);
         }
 
-        const resolvedMessageData: Message[] | DataError = this.activatedRoute.snapshot.data[`resolvedMessages`];
+        // const resolvedMessageData: Message[] | DataError = this.activatedRoute.snapshot.data[`resolvedMessages`];
 
-        if (resolvedMessageData instanceof DataError) {
-            console.log(`Data loading error: ${resolvedMessageData}`);
-            dataError = true;
-        } else {
-            this.messages = resolvedMessageData;
-            this.messageService.takeInResolvedData(this.messages);
-        }
+        // if (resolvedMessageData instanceof DataError) {
+        //     console.log(`Data loading error: ${resolvedMessageData}`);
+        //     dataError = true;
+        // } else {
+        //     this.messages = resolvedMessageData;
+        //     this.messageService.takeInResolvedData(this.messages);
+        // }
 
-        const resolvedDiscussionSettingsData: DiscussionSettings[] | DataError = this.activatedRoute.snapshot.data[`resolvedDiscussionSettings`];
+        // const resolvedDiscussionSettingsData: DiscussionSettings[] | DataError = this.activatedRoute.snapshot.data[`resolvedDiscussionSettings`];
 
-        if (resolvedDiscussionSettingsData instanceof DataError) {
-            console.log(`Data loading error: ${resolvedDiscussionSettingsData}`);
-            dataError = true;
-        } else {
-            this.discussionSettings = resolvedDiscussionSettingsData;
-            this.discussionService.takeInResolvedData(this.discussionSettings);
-        }
+        // if (resolvedDiscussionSettingsData instanceof DataError) {
+        //     console.log(`Data loading error: ${resolvedDiscussionSettingsData}`);
+        //     dataError = true;
+        // } else {
+        //     this.discussionSettings = resolvedDiscussionSettingsData;
+        //     this.discussionService.takeInResolvedData(this.discussionSettings);
+        // }
 
         const resolvedAnnouncementData: Announcements[] | DataError = this.activatedRoute.snapshot.data[`resolvedAnnouncements`];
 
@@ -465,12 +465,12 @@ export class MainClassComponent implements OnInit {
 
     message(student): void {
         //  this.hideMenu(student);
-        this.messageService.sendMessage(student);
+     //   this.messageService.sendMessage(student);
     }
 
     onSectionChange(newSectionNumber): void {
         this.sectionNumber = newSectionNumber;
-        this.discussionSettings = this.activatedRoute.snapshot.data.discussionSettings;
+       // this.discussionSettings = this.activatedRoute.snapshot.data.discussionSettings;
         this.notesSettings = this.activatedRoute.snapshot.data.notesSettings;
     }
 

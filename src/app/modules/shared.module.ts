@@ -12,7 +12,7 @@ import { ClassesResolver } from '../resolvers/classes.resolver';
 import { ClassService } from '../services/class.service';
 import { AssignmentsResolver } from '../resolvers/assignments.resolver';
 import { Globals } from 'src/globals';
-import { MessageService } from '../services/message.service';
+
 import { LoomNotificationsService } from '../services/loom.notifications.service';
 import { UserService } from '../services/user.service';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -27,7 +27,7 @@ import { EnrollmentsService } from '../services/enrollments.service';
 import { EnrollmentsResolver } from '../resolvers/enrollments.resolver';
 import { CacheInterceptor } from '../resolvers/cache.interceptor';
 import { AuthGuard } from '../services/auth-guard.service';
-import { MessagesResolver } from '../resolvers/messages-resolver';
+
 import { SeriesResolver } from '../resolvers/series.resolver';
 import { UserThumbnailComponent } from '../components/users/user-thumb/user-thumbnail.component';
 import { SafePipe } from '../shared/safe.pipe';
@@ -47,8 +47,7 @@ import { AnnouncementsResolver } from '../resolvers/announcements.resolver';
 import { AllAnnouncementsResolver } from '../resolvers/allannouncements.resolver';
 import { NotesService } from '../services/notes.service';
 import { NotesSettingsResolver } from '../resolvers/notes-settings.resolver';
-import { DiscussionService } from '../services/discussion.service';
-import { DiscussionSettingsResolver } from '../resolvers/discussion-settings-resolver';
+
 import { MaterialCollectionComponent } from '../components/materials/material-collection/material-collection.component';
 import { BookComponent } from '../components/materials/books/book.component';
 import { ImageComponent } from '../components/materials/image/image.component';
@@ -100,11 +99,9 @@ import { DisplayMaterialsComponent } from '../components/materials/display-mater
     AssignmentsService,
     ClassService,
     CourseService,
-    DiscussionService,
     EnrollmentsService,
     UserService,
     MaterialService,
-    MessageService,
     NotesService,
     SeriesService,
     HttpClientModule,
@@ -112,13 +109,11 @@ import { DisplayMaterialsComponent } from '../components/materials/display-mater
 
     AssignmentsResolver,
     ClassesResolver,
-    DiscussionSettingsResolver,
     EnrollmentsResolver,
     InstructorsResolver,
     AnnouncementsResolver,
     AllAnnouncementsResolver,
     EnrollmentsResolver,
-    MessagesResolver,
     NotesSettingsResolver,
     SeriesResolver,
 
